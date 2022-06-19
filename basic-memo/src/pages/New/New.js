@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import CustomToolbar from './CustomToolbar';
-import './quill.snow.css';
+import 'pages/Modify/quill.snow.css';
 
 const modules = {
   toolbar: {
