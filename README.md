@@ -15,7 +15,7 @@
 <br />
 
 ## Install
-<a href="/minjj0905/basic_memo/releases/download/0.1.0/basic-memo.Setup.0.1.0.exe" rel="nofollow" data-skip-pjax="">
+<a href="https://github.com/minjj0905/basic_memo/releases/download/0.1.0/basic-memo.Setup.0.1.0.exe" rel="nofollow" data-skip-pjax="">
               <span class="px-1 text-bold">basic-memo.Setup.0.1.0.exe</span>
-              
 </a>
+
