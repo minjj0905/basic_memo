@@ -3,15 +3,19 @@ import produce from './produce.util';
 export const initialState = {
   // 메모 디테일
   memo: null,
+  // 메모 추가
   addMemoLoading: false,
   addMemoDone: false,
   addMemoError: null,
+  // 메모 조회
   loadMemoLoading: false,
   loadMemoDone: false,
   loadMemoError: null,
+  // 메모 업데이트
   updateMemoLoading: false,
   updateMemoDone: false,
   updateMemoError: null,
+  // 메모 삭제
   destroyMemoLoading: false,
   destroyMemoDone: false,
   destroyMemoError: null,
@@ -23,6 +27,7 @@ export const initialState = {
   loadMemoListError: null,
 };
 
+// 각 상수
 export const ADD_MEMO_REQUEST = 'ADD_MEMO_REQUEST';
 export const ADD_MEMO_SUCCESS = 'ADD_MEMO_SUCCESS';
 export const ADD_MEMO_FAILURE = 'ADD_MEMO_FAILURE';
