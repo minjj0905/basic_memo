@@ -4,7 +4,7 @@ import wrapper from 'store/configureStore';
 import GlobalStyles from 'styles/GlobalStyles';
 import 'styles/fonts.css';
 import ResponsiveLayout from 'layouts/responsive.layout';
-import { Home, Modify, New } from 'pages';
+import { Home, Modify } from 'pages';
 
 const App = () => {
   return (
@@ -13,7 +13,6 @@ const App = () => {
       <ResponsiveLayout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/new" element={<New />} />
           <Route path="/:id" element={<Modify />} />
         </Routes>
       </ResponsiveLayout>

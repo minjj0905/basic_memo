@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Container from 'component/common/Container';
 import COLOR from 'constants/color';
+import useDate from 'hooks/useDate';
 
 const CardContainer = styled(Container.ColumnStartContainer)`
   cursor: pointer;
-  width: 240px;
+  width: 250px;
   padding: 0.7rem;
   border-radius: 0.25rem;
   margin: 0 0 0.3rem 0;
@@ -26,20 +28,30 @@ const Title = styled.div`
 `;
 
 const ContentContainer = styled(Container.RowStartContainer)`
-  width: 100%;
   font-size: 0.92rem;
+`;
+
+const Date = styled.div`
+  font-family: 'Pr-Light';
+  margin-right: 0.5rem;
+`;
+
+const Content = styled.div`
+  max-width: 160px;
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-const MemoCard = () => {
+const MemoCard = ({ memo }) => {
+  const navigate = useNavigate();
   return (
-    <CardContainer>
-      <Title>제목입니다</Title>
+    <CardContainer onClick={() => navigate(`/${memo.id}`)}>
+      <Title>{memo.title}</Title>
       <ContentContainer>
-        오후 3:53 어쩌고저쩌고내용어쩌고저쩌고내용
+        <Date>{useDate(memo.createdAt)}</Date>
+        <Content>{memo.content}</Content>
       </ContentContainer>
     </CardContainer>
   );

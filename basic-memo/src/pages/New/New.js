@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill';
 import styled from 'styled-components';
 import './quill.snow.css';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
+import useInput from 'hooks/useInput';
 
 const CustomToolbar = () => (
   <div id="toolbar">
@@ -40,7 +41,8 @@ const TitleInput = styled.input`
 `;
 
 const New = () => {
-  const [contents, setContents] = useState('');
+  const [content, setContent] = useState('');
+  const [title, onChangeTitle] = useInput('');
   const modules = {
     toolbar: {
       container: '#toolbar',
@@ -66,14 +68,18 @@ const New = () => {
   return (
     <>
       <CustomToolbar />
-      <TitleInput placeholder="제목을 입력하세요" />
+      <TitleInput
+        placeholder="제목을 입력하세요"
+        value={title}
+        onChange={onChangeTitle}
+      />
       <ReactQuill
         theme="snow"
         placeholder="내용을 입력하세요"
         modules={modules}
         formats={formats}
-        value={contents}
-        onChange={setContents}
+        value={content}
+        onChange={setContent}
       />
     </>
   );

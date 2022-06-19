@@ -77,7 +77,7 @@ function* watchMemoUpdate() {
   yield takeLatest(UPDATE_MEMO_REQUEST, memoUpdate);
 }
 
-const memoDestroyAPI = id => axios.get(`/memo/${id}`);
+const memoDestroyAPI = id => axios.delete(`/memo/${id}`);
 function* memoDestroy(action) {
   try {
     const result = yield call(memoDestroyAPI, action.id);
