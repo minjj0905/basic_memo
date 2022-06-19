@@ -143,4 +143,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True # <- 모든 호스트 허용
-CORS_ALLOW_CREDENTIALS = True
+ALLOWED_HOSTS = ['abed-121-130-166-61.jp.ngrok.io', '127.0.0.1']
+CORS_ALLOW_CREDENTIALS = True  
