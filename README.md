@@ -1,9 +1,10 @@
 # basic_memo :memo:
-
+<p>
 <img src ="https://img.shields.io/badge/Electron-47848F.svg?&style=for-the-badge&logo=electron&logoColor=white"/>
 <img src ="https://img.shields.io/badge/React-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/>
 <img src ="https://img.shields.io/badge/Django-092E20.svg?&style=for-the-badge&logo=django&logoColor=white"/>
- 
+</p>
+
 간단한 데스크탑 메모 어플리케이션
 
 ![](https://github.com/minjj0905/basic_memo/blob/main/app.png)
