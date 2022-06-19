@@ -38,7 +38,7 @@ const CustomToolbar = ({ id }) => {
       if (filtered.length) {
         navigate(`/${filtered[0].id}`);
       } else {
-        window.location.replace('/');
+        navigate(0);
       }
     }
   }, [destroyMemoDone]);

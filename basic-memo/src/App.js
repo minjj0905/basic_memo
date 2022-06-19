@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import wrapper from 'store/configureStore';
 import GlobalStyles from 'styles/GlobalStyles';
 import 'styles/fonts.css';
@@ -8,7 +8,7 @@ import { Home, Modify, New } from 'pages';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <GlobalStyles />
       <ResponsiveLayout>
         <Routes>
@@ -17,7 +17,7 @@ const App = () => {
           <Route path="/:id" element={<Modify />} />
         </Routes>
       </ResponsiveLayout>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
