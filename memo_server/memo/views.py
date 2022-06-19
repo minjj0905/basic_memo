@@ -6,7 +6,7 @@ from .serializers import MemoSerializer
 from rest_framework.decorators import api_view
 
 class MemoList(generics.ListCreateAPIView):
-  queryset = Memo.objects.all()
+  queryset = Memo.objects.all().order_by('-created_at',)
   serializer_class = MemoSerializer
 
   def get(self, request, *args, **kwargs):

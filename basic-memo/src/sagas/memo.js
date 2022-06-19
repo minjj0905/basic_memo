@@ -58,7 +58,7 @@ function* watchMemoAdd() {
   yield takeLatest(ADD_MEMO_REQUEST, memoAdd);
 }
 
-const memoUpdateAPI = (id, data) => axios.put(`/memo/${id}`, data);
+const memoUpdateAPI = (id, data) => axios.put(`/memo/${id}/`, data);
 function* memoUpdate(action) {
   try {
     const result = yield call(memoUpdateAPI, action.id, action.data);

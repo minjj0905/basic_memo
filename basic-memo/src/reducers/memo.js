@@ -54,6 +54,7 @@ const reducer = (state = initialState, action) =>
       case ADD_MEMO_SUCCESS:
         draft.addMemoLoading = false;
         draft.addMemoDone = true;
+        draft.memo = action.data;
         break;
       case ADD_MEMO_FAILURE:
         draft.addMemoLoading = false;

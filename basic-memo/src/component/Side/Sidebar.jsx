@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Container from 'component/common/Container';
 import { LOAD_MEMOLIST_REQUEST } from 'reducers/memo';
@@ -16,16 +16,42 @@ const MainContainer = styled(Container.ColumnMiddleContainer)`
 
 const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { memoList } = useSelector(state => state.memo);
+  const [initial, setInitial] = useState(false);
+  const { memoList, loadMemoListDone } = useSelector(state => state.memo);
   useEffect(() => {
     dispatch({
       type: LOAD_MEMOLIST_REQUEST,
     });
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (loadMemoListDone) {
+      if (!initial && memoList.length) {
+        navigate(`/${memoList[0]?.id}`);
+        setInitial(true);
+      }
+      if (!memoList.length) {
+        navigate('/new');
+      }
+    }
+  }, [loadMemoListDone]);
+
   return (
     <MainContainer>
-      {memoList.map(memo => (
+      {!memoList.length ? (
+        <Container.ColumnMiddleContainer
+          style={{
+            width: '250px',
+            height: '100vh',
+            justifyContent: 'center',
+          }}
+        >
+          메모가 없습니다
+        </Container.ColumnMiddleContainer>
+      ) : null}
+      {memoList?.map(memo => (
         <MemoCard memo={memo} />
       ))}
     </MainContainer>

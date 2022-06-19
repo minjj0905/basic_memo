@@ -5,7 +5,11 @@ import ReactQuill, { Quill } from 'react-quill';
 import './quill.snow.css';
 import styled from 'styled-components';
 import useInput from 'hooks/useInput';
-import { LOAD_MEMO_REQUEST } from 'reducers/memo';
+import {
+  LOAD_MEMO_REQUEST,
+  UPDATE_MEMO_REQUEST,
+  LOAD_MEMOLIST_REQUEST,
+} from 'reducers/memo';
 import CustomToolbar from './CustomToolbar';
 
 const modules = {
@@ -35,6 +39,7 @@ Size.whitelist = ['extra-small', 'small', 'medium', 'large'];
 Quill.register(Size, true);
 
 const TitleInput = styled.input`
+  width: 90%;
   font-family: Pr-Bold;
   font-size: 1.3rem;
   margin: 0.5rem 0 0 0.85rem;
@@ -61,6 +66,22 @@ const Modify = () => {
     }
   }, [loadMemoDone]);
 
+  useEffect(() => {
+    if (loadMemoDone) {
+      dispatch({
+        type: UPDATE_MEMO_REQUEST,
+        id,
+        data: {
+          title,
+          content,
+        },
+      });
+      dispatch({
+        type: LOAD_MEMOLIST_REQUEST,
+      });
+    }
+  }, [title, content]);
+
   return (
     <>
       <CustomToolbar id={id} />
@@ -68,6 +89,7 @@ const Modify = () => {
         placeholder="제목을 입력하세요"
         value={title}
         onChange={onChangeTitle}
+        maxLength="30"
       />
       <ReactQuill
         theme="snow"

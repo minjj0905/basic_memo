@@ -48,10 +48,10 @@ const MemoCard = ({ memo }) => {
   const navigate = useNavigate();
   return (
     <CardContainer onClick={() => navigate(`/${memo.id}`)}>
-      <Title>{memo.title}</Title>
+      <Title>{memo.title || '제목없음'}</Title>
       <ContentContainer>
         <Date>{useDate(memo.createdAt)}</Date>
-        <Content>{memo.content}</Content>
+        <Content>{memo.content.replace(/(<([^>]+)>)/gi, '')}</Content>
       </ContentContainer>
     </CardContainer>
   );

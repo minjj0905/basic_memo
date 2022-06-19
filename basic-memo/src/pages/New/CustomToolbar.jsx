@@ -5,8 +5,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
-import { RiDeleteBin6Line } from 'react-icons/ri';
-import { ADD_MEMO_REQUEST, DESTROY_MEMO_REQUEST } from 'reducers/memo';
+import { ADD_MEMO_REQUEST } from 'reducers/memo';
 
 const CustomToolbar = ({ id }) => {
   const dispatch = useDispatch();
@@ -25,21 +24,11 @@ const CustomToolbar = ({ id }) => {
     });
   };
 
-  const handleDelete = () => {
-    dispatch({
-      type: DESTROY_MEMO_REQUEST,
-      id,
-    });
-  };
-
   useEffect(() => {
     if (destroyMemoDone) {
       const filtered = memoList.filter(m => m.id != id);
-      if (filtered.length) {
-        navigate(`/${filtered[0].id}`);
-      } else {
-        window.location.replace('/');
-      }
+      console.log(filtered);
+      navigate(`/${filtered[0].id}`);
     }
   }, [destroyMemoDone]);
 
@@ -54,32 +43,12 @@ const CustomToolbar = ({ id }) => {
       <button
         onClick={handleCreate}
         className="ql-insertHeart"
-        style={{ marginRight: '14rem' }}
+        style={{ width: '140px', display: 'flex', alignItems: 'center' }}
       >
         <HiOutlinePencilAlt size="24" />
-      </button>
-      <select
-        className="ql-header"
-        style={{ marginRight: '1rem' }}
-        defaultValue=""
-        onChange={e => e.persist()}
-      >
-        <option value="1" />
-        <option value="2" />
-        <option selected />
-      </select>
-      <button className="ql-bold" />
-      <button className="ql-italic" />
-      <button className="ql-underline" style={{ marginRight: '1rem' }} />
-      <select className="ql-color" />
-      <button className="ql-list" value="ordered" />
-      <button className="ql-list" value="bullet" />
-      <button
-        className="ql-insertHeart"
-        onClick={handleDelete}
-        style={{ marginLeft: '2rem' }}
-      >
-        <RiDeleteBin6Line size="24" />
+        <div style={{ fontFamily: 'Pr-Bold', fontSize: '1rem' }}>
+          새 글 작성하기
+        </div>
       </button>
     </div>
   );
