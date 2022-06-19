@@ -1,6 +1,6 @@
 const COLOR = {
   GRAY: '#404040',
-  LIGHTGRAY: '#9d9d9d',
+  LIGHTGRAY: '#dedede',
   BACKGROUND: '#F5F7FA',
   WHITE: '#fff',
 };
