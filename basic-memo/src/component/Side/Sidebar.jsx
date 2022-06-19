@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Container from 'component/common/Container';
+import { LOAD_MEMOLIST_REQUEST } from 'reducers/memo';
 import MemoCard from './MemoCard';
 
 const MainContainer = styled(Container.ColumnMiddleContainer)`
@@ -12,6 +15,13 @@ const MainContainer = styled(Container.ColumnMiddleContainer)`
 `;
 
 const Sidebar = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MEMOLIST_REQUEST,
+    });
+  }, [location.pathname]);
   return (
     <MainContainer>
       <MemoCard />

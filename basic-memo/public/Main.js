@@ -9,9 +9,10 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 900,
     height: 700,
+    resizable: false,
   });
 
-  win.setMenu(null);
+  // win.setMenu(null);
   /*
    * ELECTRON_START_URL을 직접 제공할경우 해당 URL을 로드합니다.
    * 만일 URL을 따로 지정하지 않을경우 (프로덕션빌드) React 앱이

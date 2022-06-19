@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactQuill from 'react-quill';
+import styled from 'styled-components';
 import './quill.snow.css';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 
 const CustomToolbar = () => (
   <div id="toolbar">
     <Link to="/new">
-      <button className="ql-new" style={{ marginRight: '5rem' }}>
+      <button className="ql-new" style={{ marginRight: '15rem' }}>
         <HiOutlinePencilAlt size="24" />
       </button>
     </Link>
@@ -32,8 +33,14 @@ const CustomToolbar = () => (
   </div>
 );
 
+const TitleInput = styled.input`
+  font-family: Pr-Bold;
+  font-size: 1.3rem;
+  margin: 0.5rem 0 0 0.85rem;
+`;
+
 const New = () => {
-  const [contents, setContents] = useState('왜이러냐고');
+  const [contents, setContents] = useState('');
   const modules = {
     toolbar: {
       container: '#toolbar',
@@ -59,9 +66,10 @@ const New = () => {
   return (
     <>
       <CustomToolbar />
+      <TitleInput placeholder="제목을 입력하세요" />
       <ReactQuill
         theme="snow"
-        placeholder="..."
+        placeholder="내용을 입력하세요"
         modules={modules}
         formats={formats}
         value={contents}
